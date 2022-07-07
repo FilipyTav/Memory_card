@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.main_container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    width: 100vw;
+    height: 20%;
+
+    background: purple;
+    color: mistyrose;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header_txt {
+    font-size: 4rem;
+}
