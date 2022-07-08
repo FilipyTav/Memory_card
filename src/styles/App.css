@@ -7,7 +7,9 @@
 
 .main_container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+
+    background: #280828;
 }
 
 .header {
@@ -17,6 +19,7 @@
     background: purple;
     color: mistyrose;
     font-weight: bold;
+    text-align: center;
 
     display: flex;
     align-items: center;
@@ -25,4 +28,27 @@
 
 .header_txt {
     font-size: 4rem;
+}
+
+.main_content {
+    width: 100vw;
+    min-height: auto;
+}
+
+.cards {
+    height: auto;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-rows: 15rem;
+    gap: 1.5rem;
+
+    padding: 15px;
+}
+
+.card {
+    background: thistle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
