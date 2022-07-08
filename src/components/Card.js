@@ -1,5 +1,6 @@
 const Card = (props) => {
-    return <div className="card">{props.content}</div>;
+    const { content } = props;
+    return <div className="card">{content}</div>;
 };
 
 export default Card;

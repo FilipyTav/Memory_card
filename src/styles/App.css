@@ -20,6 +20,7 @@
     color: mistyrose;
     font-weight: bold;
     text-align: center;
+    padding: 0.6rem;
 
     display: flex;
     align-items: center;
@@ -33,6 +34,18 @@
 .main_content {
     width: 100vw;
     min-height: auto;
+}
+
+.scores {
+    background-color: turquoise;
+    padding: 0.4rem;
+    text-align: center;
+    font-weight: bold;
+    color: purple;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .cards {
