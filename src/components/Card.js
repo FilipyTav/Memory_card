@@ -1,6 +1,10 @@
 const Card = (props) => {
-    const { content } = props;
-    return <div className="card">{content}</div>;
+    const { content, select_card } = props;
+    return (
+        <div className="card" onClick={select_card}>
+            {content}
+        </div>
+    );
 };
 
 export default Card;

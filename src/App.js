@@ -4,6 +4,9 @@ import Card from "./components/Card";
 
 const App = () => {
     const [all_cards, set_all_cards] = useState([]);
+    const [cards_already_selected, set_cards_already_selected] = useState([]);
+    const [score_count, set_score_count] = useState(0);
+    const [highscore_count, set_highscore_count] = useState(0);
 
     let cards_content = [];
 
@@ -30,7 +33,7 @@ const App = () => {
 
             set_all_cards((prev_cards) => [
                 ...prev_cards,
-                <Card key={i} content={content} />,
+                <Card key={i} content={content} select_card={select_card} />,
             ]);
         }
     };
@@ -48,7 +51,40 @@ const App = () => {
             set_all_cards([]);
             cards_content = [];
         };
-    }, []);
+    }, [score_count]);
+
+    const select_card = (e) => {
+        const selected = e.target.textContent;
+
+        if (
+            !cards_already_selected.includes(selected) &&
+            score_count + 1 < 12
+        ) {
+            set_cards_already_selected((prev_cards) => [
+                ...prev_cards,
+                selected,
+            ]);
+            set_score_count((prev_score) => prev_score + 1);
+        } else if (
+            !cards_already_selected.includes(selected) &&
+            score_count + 1 === 12
+        ) {
+            set_cards_already_selected((prev_cards) => [
+                ...prev_cards,
+                selected,
+            ]);
+
+            set_highscore_count(score_count + 1);
+
+            set_score_count(0);
+            set_cards_already_selected([]);
+        } else {
+            if (score_count > highscore_count) set_highscore_count(score_count);
+
+            set_score_count(0);
+            set_cards_already_selected([]);
+        }
+    };
 
     return (
         <div className="main_container">
@@ -57,8 +93,8 @@ const App = () => {
             </header>
             <section className="main_content">
                 <div className="scores">
-                    <span>Score: 10</span>
-                    <span> Highscore: 12</span>
+                    <span>Score: {score_count}</span>
+                    <span> Highscore: {highscore_count} </span>
                 </div>
                 <div className="cards">{all_cards}</div>
             </section>
