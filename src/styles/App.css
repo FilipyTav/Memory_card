@@ -62,6 +62,23 @@
 .card {
     background: thistle;
     display: flex;
+    flex-flow: column nowrap;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.card_content {
+    padding: 10px;
+    display: flex;
+    min-height: 90%;
     align-items: center;
     justify-content: center;
+}
+
+.card_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
 }

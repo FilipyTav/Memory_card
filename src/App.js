@@ -13,14 +13,37 @@ const App = () => {
     const [score_count, set_score_count] = useState(0);
     const [highscore_count, set_highscore_count] = useState(0);
 
+    let amount_cards = 0;
+
+    // What the cards are about
+    const Color = (name, value) => {
+        return {
+            name,
+            value,
+        };
+    };
+
     // Content to be distributed randomly to all cards
     let cards_content = [];
 
     // Adds the content to the array
     const populate_cards_content = () => {
-        for (let i = 0; i < 12; i++) {
-            cards_content.push(i);
-        }
+        cards_content = [
+            Color("delete", "#de1e7e"),
+            Color("codecs", "#c0d3c5"),
+            Color("failed", "#fa113d"),
+            Color("decade", "#decade"),
+            Color("ace", "#ace"),
+            Color("dad", "#d4d"),
+            Color("sos", "#505"),
+            Color("dot", "#d07"),
+            Color("fooled", "#f001ed"),
+            Color("astral", "#a572a1"),
+            Color("bed", "#bed"),
+            Color("oil", "#011"),
+        ];
+
+        amount_cards = cards_content.length;
     };
 
     // Random integer between min and max, both inclusive
@@ -39,7 +62,7 @@ const App = () => {
 
     // Creates the Card elements and adds them to all_cards
     const create_cards = () => {
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < amount_cards; i++) {
             // Content to be assigned
             const content = choose_random_content();
 
@@ -69,14 +92,14 @@ const App = () => {
 
     // Selects a card when it is clicked
     const select_card = (e) => {
-        const selected = e.target.textContent;
+        const selected = e.target.closest(".card").textContent;
 
         // The else if is here because the set function of useState is async (delayed)
 
         // If the card has not been selected previously and it is not the last card available
         if (
             !cards_already_selected.includes(selected) &&
-            score_count + 1 < 12
+            score_count + 1 < amount_cards
         ) {
             // Considers the card as selected
             set_cards_already_selected((prev_cards) => [
@@ -89,7 +112,7 @@ const App = () => {
         } else if (
             // If it is the last card available
             !cards_already_selected.includes(selected) &&
-            score_count + 1 === 12
+            score_count + 1 === amount_cards
         ) {
             set_cards_already_selected((prev_cards) => [
                 ...prev_cards,
